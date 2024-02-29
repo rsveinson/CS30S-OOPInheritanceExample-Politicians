@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.text.NumberFormat;
 
 /********************************************************************
  * Programmer:    sveinson
@@ -16,6 +17,7 @@ public class CabinetMinister extends Politician{
     
     private static final double COMMITTEAMOUNT =  8500.00;
     private static final String nl = System.lineSeparator();
+    private static final NumberFormat currency = NumberFormat.getCurrencyInstance();
     
     //*** Instance Variables ***
     
@@ -121,9 +123,10 @@ public class CabinetMinister extends Politician{
         // get salary and committee stipend
         totalPay = salary + calculateStipend();
         st.append(nl).append("Salary and stipends:").append(nl);
-        st.append("Salary: ").append(getSalary()).append(nl);
-        st.append("Committee Stipend: ").append(calculateStipend()).append(nl);
-        st.append("Total Pay: ").append(totalPay).append(nl);
+        st.append("Salary: ").append(currency.format(getSalary())).append(nl);
+        st.append("Committee Stipend: ");
+        st.append(currency.format(calculateStipend())).append(nl);
+        st.append("Total Pay: ").append(currency.format(totalPay)).append(nl);
         
         
         return st.toString();
