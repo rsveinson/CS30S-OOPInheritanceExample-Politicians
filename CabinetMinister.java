@@ -14,18 +14,24 @@ import java.util.ArrayList;
 public class CabinetMinister extends Politician{
     //*** Class Variables ***
     
+    private static final double COMMITTEAMOUNT =  8500.00;
+    private static final String nl = System.lineSeparator();
+    
     //*** Instance Variables ***
     
     private String cabinetPost;
     private ArrayList<String> committees;
-    private double committeeStipend;
+    
+    // since we calcualte this on demand there's no
+    // need for a field
+    //private double committeeStipend;
     
     //*** Constructors ***
     public CabinetMinister(){
         // implicit call to superclass no-arg constructor
         cabinetPost = "Unknown";
         committees = new ArrayList<String>();
-        committeeStipend = 0;
+        //committeeStipend = 0;
     }// end no-arg
     
     // super class full arg constructor arguments
@@ -34,7 +40,8 @@ public class CabinetMinister extends Politician{
                         String p, double sal, String cp){
         super(fn, ln, r, p, sal);
         committees = new ArrayList<>();
-        committeeStipend = 0;
+        cabinetPost = cp;
+        //committeeStipend = 0;
     }// end full-arg
                         
     //*** Getters ***
@@ -47,9 +54,9 @@ public class CabinetMinister extends Politician{
     }
     
     //** might remove this
-    public double getCommitteeStipend(){
-        return committeeStipend;
-    }
+    // public double getCommitteeStipend(){
+        // return committeeStipend;
+    // }
     
     //*** Setters ***
     public void setCabinetPost(String cp){
@@ -60,7 +67,67 @@ public class CabinetMinister extends Politician{
         committees = c;
     }
     
+    // *** utilities ***
+    public void addCommittee(String com){
+        committees.add(com);
+    }// end add committee
     
+    // remove committee???
+    //<lastName>: <party>: <cabinetPost>
+    @Override
+    public String getName(){
+        StringBuilder st = new StringBuilder();
+        
+        st.append(lastName).append(": ").append(party);
+        st.append(": ").append(cabinetPost);
+        
+        return st.toString();
+    }// end to string
+    
+    
+    // calculate the committe stipend
+    private double calculateStipend(){
+        double stipendAmount = 0;
+        
+        for(String c : committees){
+            stipendAmount += COMMITTEAMOUNT;
+        }// end enhanced for
+        
+        
+        return stipendAmount;
+    }// end calc stipend 
+    
+    /* this method will display the cabinet
+     * minister's Name, cabinet post
+     * list of committees, salary, committee stipend
+     * and total pay
+     */
+    public String displayInfo(){
+        StringBuilder st = new StringBuilder();
+        double totalPay = 0.0;
+        
+        // add name and cabinet post
+        st.append(firstName).append(" ");
+        st.append(lastName).append(" ");
+        st.append(cabinetPost).append(nl).append(nl);
+        st.append("Committees:").append(nl);
+        
+        // add list of committees
+        for(String c : committees){
+            st.append(c);
+            st.append(nl);
+        }// end for each committee
+        
+        // get salary and committee stipend
+        totalPay = salary + calculateStipend();
+        st.append(nl).append("Salary and stipends:").append(nl);
+        st.append("Salary: ").append(getSalary()).append(nl);
+        st.append("Committee Stipend: ").append(calculateStipend()).append(nl);
+        st.append("Total Pay: ").append(totalPay).append(nl);
+        
+        
+        return st.toString();
+    }// end displayInfo
     
 } // end of public class
 

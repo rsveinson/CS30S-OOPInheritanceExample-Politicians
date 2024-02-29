@@ -105,9 +105,9 @@ public class Politician {
         return st.toString();   
     }// end toString()
 
+
 } // end of public class
 
-    
 /*****************************************
  * Description: brief description of the methods purpose
  * 

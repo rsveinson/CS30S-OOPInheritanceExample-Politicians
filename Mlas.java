@@ -71,7 +71,7 @@ public class Mlas {  // begin class
 
         // ************************ processing ***************************
 
-        // testing
+        // testing Politician
         Politician p = new Politician();
         Politician p1 = new Politician("Robert", "Oppenhiemer", "Central", "NDP", 100000);
 
@@ -98,6 +98,29 @@ public class Mlas {  // begin class
         System.out.println();
         System.out.println("Testing toString()");
         System.out.println(p1);
+        
+        // testing CabinetMinister
+        //"Robert", "Oppenhiemer", "Central", "NDP", 100000
+        CabinetMinister cb1 = new CabinetMinister("Nelo", "Altomar",
+                                    "Transcona", "NDP", 100000, "Edu");
+                                    
+        // getName()
+        System.out.println();
+        System.out.println("Testing CabinetMinister getName()");
+        System.out.println(cb1);
+        
+        System.out.println();
+        System.out.println("Testing CabinetMinister toString()");
+        System.out.println(cb1);
+        
+        System.out.println();
+        System.out.println("Testing CabinetMinister displayInfo()");
+        
+        // add some committees
+        cb1.addCommittee("Tourism");
+        cb1.addCommittee("HealthCare");
+        cb1.addCommittee("Agriculture");
+        System.out.println(cb1.displayInfo());
 
         // ************************ print output ****************************
 
