@@ -11,6 +11,8 @@
 // import java libraries here as needed
 
 import javax.swing.*;
+import java.util.ArrayList;
+
 //import java.text.DecimalFormat;
 import java.io.*;
 import java.text.NumberFormat;
@@ -144,6 +146,53 @@ public class Mlas {  // begin class
         prem.setSeats(30);       // now 30 seats instead of 35
         System.out.println("The Premier is: " + currency.format(prem.getSalary()));
 
+        /* now test them all together
+         * using an ArrayList of type <Politician> we can 
+         * have a collection of Politicians, CabinetMinisters
+         * and premiers. Why is this?
+         * Because CabinetMinister and Premier extend Poltitician so 
+         * there is a "is a" relationship
+         * 
+         * we have Politicians p and p1
+         * CabinetMinisters cb1
+         * Premier prem
+         */
+        
+        ArrayList<Politician> list = new ArrayList<>();
+        System.out.println();
+        System.out.println("Testing driver array list of politicians");
+        
+        // add some objects to the list
+        list.add(p);
+        list.add(p1);
+        list.add(cb1);
+        list.add(prem);
+        
+        //System.out.println(list);
+        for(Politician pol : list){
+            //System.out.println(pol);
+            System.out.println(pol.getName());
+        }
+        
+        // accessing sub-class features from the arraylist
+        Premier tempPrem = (Premier)list.get(3);
+        tempPrem.setSeats(25);
+        System.out.println(tempPrem.getSalary());
+        System.out.println(list.get(3).getSalary());
+        
+        // use instanceof
+        for(Politician pol : list){
+            String type = "Politician";
+            if(pol instanceof CabinetMinister){
+                type = "Cabinet Minister";
+            }
+            
+            if(pol instanceof Premier){
+                type = "Premier";
+            }
+            System.out.println(type);
+        }
+        
         // ************************ print output ****************************
 
         // ******** closing message *********
