@@ -15,6 +15,7 @@ public class Politician {
     //*** Class Variables ***
 
     public static NumberFormat currency = NumberFormat.getCurrencyInstance();
+    protected static final double BASESALARY = 100000;
 
     //*** Instance Variables ***
 

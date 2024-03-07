@@ -121,6 +121,28 @@ public class Mlas {  // begin class
         cb1.addCommittee("HealthCare");
         cb1.addCommittee("Agriculture");
         System.out.println(cb1.displayInfo());
+        
+        // test Premier
+        Premier prem = new Premier("Winston", "Churchill", "South", "Whig", 100000, 4.3, 35);
+        
+        System.out.println();
+        System.out.println("Testing Premier getName()");
+        System.out.println("The Premier is: " + prem.getName());
+        
+        System.out.println();
+        System.out.println("Testing Premier getrSalary()");
+        System.out.println("The Premier is: " + currency.format(prem.getSalary()));
+        
+        /* the premier's part has lost some seats
+         * use the setter to set the new number of seats 
+         * and then display the new slaray
+         */
+        
+        System.out.println();
+        System.out.println("Testing Premier getSalary() and set new number of seats");
+        System.out.println("Salary should be reduced by $10,000");
+        prem.setSeats(30);       // now 30 seats instead of 35
+        System.out.println("The Premier is: " + currency.format(prem.getSalary()));
 
         // ************************ print output ****************************
 
